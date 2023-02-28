@@ -21,8 +21,7 @@ DIFF is a QT/GUI C++ program that compares two input text files and shows the di
 3. Choose the comparison options, such as ignoring white space or letter case.
 4. Click on the "Compare" button to compare the files.
 5. View the differences in the text box below the "Compare" button.
-6. Optionally, the user has the option to ignore certain types of differences, such as white space or letter case.
-7. Optionally, save the differences to a file by clicking on the "Save Differences" button.
+6. Optionally, save the differences to a file by clicking on the "Save Differences" button.
 
 # Specifications
 1. The program should be able to handle plain text files of any size.
