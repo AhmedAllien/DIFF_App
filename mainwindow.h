@@ -26,6 +26,7 @@ private:
     QCheckBox* ignoreWhiteSpaceCheckBox;
     QCheckBox* ignoreCaseCheckBox;
     QTextEdit *differencesTextEdit;
+    static const QString supportedFileTypes;
 
     void compare(QString referencePath, QString testPath, QString &differences, bool ignoreWhiteSpace, bool ignoreCase);
 };

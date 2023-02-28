@@ -65,7 +65,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::browseReferenceFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Reference File"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Reference File"), QDir::homePath(), supportedFileTypes);
     if (!fileName.isEmpty()) {
         referencePathLineEdit->setText(fileName);
         referenceFilePath = fileName;
@@ -74,7 +74,7 @@ void MainWindow::browseReferenceFile()
 
 void MainWindow::browseTestFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Test File"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Test File"), QDir::homePath(), supportedFileTypes);
     if (!fileName.isEmpty()) {
         testPathLineEdit->setText(fileName);
         testFilePath = fileName;
@@ -99,12 +99,12 @@ void MainWindow::compare(QString refFilePath, QString testFilePath, QString& dif
     QFile testFile(testFilePath);
 
     if (!refFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        diffOutput = "Error: Could not open reference file.";
+        QMessageBox::warning(this, tr("Error"), tr("Error: Could not open reference file."));
         return;
     }
 
     if (!testFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        diffOutput = "Error: Could not open test file.";
+        QMessageBox::warning(this, tr("Error"), tr("Error: Could not open test file."));
         return;
     }
 
@@ -162,3 +162,7 @@ void MainWindow::saveDifferences() {
     outStream << differencesTextEdit->toPlainText();
     outputFile.close();
 }
+
+const QString MainWindow::supportedFileTypes = "Text files (*.txt);;"
+                                               "Source code files (*.cpp *.h *.py *.java *.js *.php);;"
+                                               "Markup and layout files (*.xml *.html *.css *.scss *.less *.sass)";
