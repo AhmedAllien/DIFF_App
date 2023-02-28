@@ -1,7 +1,5 @@
 #include <QtWidgets>
 
-#include "diffengine.h"
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
